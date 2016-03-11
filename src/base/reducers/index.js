@@ -39,6 +39,4 @@ const todoApp = combineReducers({
     todos
 });
 
-export default todoApp;/**
- * Created by liu_k on 2016/1/28.
- */
+export default todoApp;

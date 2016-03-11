@@ -2,10 +2,14 @@ import React, { Component } from 'react';
 import { NICE, SUPER_NICE } from './colors';
 import { createStore } from 'redux'
 import { Provider } from 'react-redux'
-import {run} from './base/app';
+//import {run} from './base/app';
+import {run} from './mutireducer/app';
 import TodoApp from './todos/TodoApp';
 
 import todoApp from './todos/reducers/'
+
+//import rootApp from './mutireducer/reducers/'
+//console.log( "rootApp = " + rootApp );
 run();
 //
 //function counter(state = 0, action) {
