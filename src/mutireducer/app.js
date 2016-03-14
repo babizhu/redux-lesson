@@ -6,7 +6,8 @@
 
 import { createStore } from 'redux'
 import rootApp from './reducers/'
-import { addJob, updateVisibile } from './actions/job';
+import { addJob, updateVisible,updateJob } from './actions/job';
+import { loginUser } from './actions/user';
 
 export function run() {
     let store = createStore(rootApp);
@@ -19,9 +20,13 @@ export function run() {
     );
 
 // 发起一系列 action
-    store.dispatch(addJob('Learn about actions'));
+    store.dispatch(addJob({name: 'Learn about actions', owner: 'bbz', cost: 108}));
+    store.dispatch(updateVisible(false));
 
+    store.dispatch(updateJob(10, {name: 'What happend', owner: 'bbz', cost: 18}));
+    store.dispatch(loginUser('bbz', 'password'));
 
+    console.log(JSON.stringify(store.getState().userReducer.login));
     //let a = [1,2,3,4];
     //let b = a.map(x=>x*x);
     //console.log('a的对象类型是' +Object.prototype.toString.call(a));

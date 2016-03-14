@@ -11,5 +11,4 @@ const rootApp = combineReducers({
     userReducer,
     jobReducer
 });
-//console.log( (rootApp));
 export default rootApp;
