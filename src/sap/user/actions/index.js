@@ -1,7 +1,7 @@
 export const USER_LOGIN = 'USER_LOGIN';
 export const USER_LOGOUT = 'USER_LOGOUT';
 
-export function userLogin(username, pass) {
+export function userLogin( username, pass ) {
     return {
         type: USER_LOGIN,
         username,

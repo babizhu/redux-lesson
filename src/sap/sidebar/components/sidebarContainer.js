@@ -9,11 +9,14 @@ import { connect } from 'react-redux';
 import { userLogin, userLogout } from '../../user/actions/index';
 class SideBarContainer extends Component {
     render() {
-        const { dispatch, visibleMenuData } = this.props;
+        const { dispatch, visibleMenuData,user } = this.props;
+        console.log(JSON.stringify(user))
         return (
 
             <div>
                 <h2>{visibleMenuData}</h2>
+                姓名:{user.name}
+                住址:{user.address}
                 <button onClick={() => {
                 dispatch(userLogin('bbz', 'password'));
                 }}>
@@ -22,17 +25,15 @@ class SideBarContainer extends Component {
                 <button onClick={() => {
                 dispatch(userLogout());
                 }}>
-                    推出
+                    退出
                 </button>
             </div>
         );
     }
-
-
 }
 
 
-function selectMenuData(menuData, userMenu) {
+function mapStateToProps(menuData, userMenu) {
     //return menuData.filter(data => {
     //    //console.log(data + ',' + userMenu)
     //    return data == userMenu});
@@ -47,7 +48,8 @@ function selectMenuData(menuData, userMenu) {
 function select(state) {
     console.log(JSON.stringify(state.user));
     return {
-        visibleMenuData: selectMenuData(state.sidebar.menuData.nodes, state.user.userInfo.menu)
+        visibleMenuData: mapStateToProps(state.sidebar.menuData.nodes, state.user.userInfo.menu),
+        user:state.user.userInfo
     };
 }
 

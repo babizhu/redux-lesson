@@ -12,6 +12,7 @@ const initialState = {
     role: '',
     email: 'anonymous@abc.com',
     photoImg: '/1.jpg',
+    address: '中国 重庆市 南岸区',
     menu: ['aaa']
 
 };
@@ -25,6 +26,7 @@ const userData = {
     role: '',
     email: '185938@qq.com',
     photoImg: '/2.jpg',
+    address: '中国 重庆市 南岸区',
     menu: ['aaa','bbb']
 };
 
