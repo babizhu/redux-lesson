@@ -56,9 +56,8 @@ function select(state) {
 }
 function mapDispatchToProps(dispatch) {
     //console.log('userActions=' + JSON.stringify(userActions));
-    const ret = bindActionCreators(userActions, dispatch)
-    //console.log('mapDispatchToProps = ' + JSON.stringify(ret));
-    return ret;
+    return bindActionCreators(userActions, dispatch)
+
 }
 // 包装 component ，注入 dispatch 和 state 到其默认的 connect(select)(App) 中；
 export default connect(select, mapDispatchToProps)(SideBarContainer);
