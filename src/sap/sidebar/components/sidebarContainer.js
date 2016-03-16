@@ -3,14 +3,16 @@
  *
  */
 import React, { Component } from 'react';
-
+import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
-import { userLogin, userLogout } from '../../user/actions/index';
+//import { userLogin, userLogout } from '../../user/actions/index';
+import * as userActions from '../../user/actions/index';
+
 class SideBarContainer extends Component {
     render() {
-        const { dispatch, visibleMenuData,user } = this.props;
-        console.log(JSON.stringify(user))
+        //console.log('userActions==' + userActions.userLogin);
+        const { userLogin,userLogout,dispatch, visibleMenuData,user } = this.props;
         return (
 
             <div>
@@ -18,12 +20,12 @@ class SideBarContainer extends Component {
                 姓名:{user.name}
                 住址:{user.address}
                 <button onClick={() => {
-                dispatch(userLogin('bbz', 'password'));
+                userLogin('bbz', 'password');
                 }}>
                     登陆
                 </button>
                 <button onClick={() => {
-                dispatch(userLogout());
+                userLogout();
                 }}>
                     退出
                 </button>
@@ -46,12 +48,17 @@ function mapStateToProps(menuData, userMenu) {
 // 基于全局 state ，哪些是我们想注入的 props ?
 // 注意：使用 https://github.com/faassen/reselect 效果更佳。
 function select(state) {
-    console.log(JSON.stringify(state.user));
+
     return {
         visibleMenuData: mapStateToProps(state.sidebar.menuData.nodes, state.user.userInfo.menu),
-        user:state.user.userInfo
+        user: state.user.userInfo
     };
 }
-
+function mapDispatchToProps(dispatch) {
+    //console.log('userActions=' + JSON.stringify(userActions));
+    const ret = bindActionCreators(userActions, dispatch)
+    //console.log('mapDispatchToProps = ' + JSON.stringify(ret));
+    return ret;
+}
 // 包装 component ，注入 dispatch 和 state 到其默认的 connect(select)(App) 中；
-export default connect(select)(SideBarContainer);
+export default connect(select, mapDispatchToProps)(SideBarContainer);
