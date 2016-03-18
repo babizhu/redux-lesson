@@ -33,6 +33,10 @@ const userData = {
 function userInfo(state = initialState, action) {
     switch (action.type) {
         case USER_LOGIN:
+            if( action.username !== 'bbz'){
+                action.error = '错误的用户名'
+                return state;
+            }
             return Object.assign({}, userData, {
                 name: action.username
             });//测试只替换某个部分

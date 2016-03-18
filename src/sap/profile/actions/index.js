@@ -5,7 +5,8 @@ export function userLogin( username, pass ) {
     return {
         type: USER_LOGIN,
         username,
-        pass
+        pass,
+        error:''
     };
 }
 

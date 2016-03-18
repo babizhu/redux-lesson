@@ -5,7 +5,7 @@
  */
 
 import { combineReducers } from 'redux';
-import user from './user/reducers/index';
+import user from './profile/reducers/index';
 import sidebar from './sidebar/reducers/index';
 
 

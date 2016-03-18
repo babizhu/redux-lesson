@@ -5,9 +5,10 @@ import { Provider } from 'react-redux'
 
 //import {run} from './base/app';
 //import {run} from './mutireducer/app';
+import {run} from './async/base/app';
 import rootReducer from './sap/rootReducer';
 import Sap from './sap/app'
-
+run();
 //import TodoApp from './todos/TodoApp';
 //
 //import todoApp from './todos/reducers/'
