@@ -21,4 +21,25 @@ export function run() {
 // 发起一系列 action
     store.dispatch(fetchPosts('reactjs'));
     store.dispatch(fetchPosts('front'));
+
+
+    let todos=[
+        {
+            text:'a',
+            isComplete:true
+        },
+        {
+            text:'ab',
+            isComplete:false
+        },
+        {
+            text:'abc',
+            isComplete:true
+        },
+    ]
+
+    const completedCount = todos.reduce((count, todo) =>
+            todo.isComplete ? count + 1 : count,  0
+    );
+    console.log('todos completed = ' + completedCount);
 }
